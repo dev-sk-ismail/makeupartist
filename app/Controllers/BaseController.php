@@ -67,14 +67,17 @@ abstract class BaseController extends Controller
         // Load the URI service
         $uri = service('uri');
         // Check if the second segment exists before accessing it
-        if ($uri->getTotalSegments() >= 3) {
-            $segment3 = $uri->getSegment(3);
-            $this->data['segment3'] = $segment3;
-        } elseif($uri->getTotalSegments() >= 2) {
+        if ($uri->getTotalSegments() >= 2) {
             $segment2 = $uri->getSegment(2);
             $this->data['segment2'] = $segment2;
+            $segment3 = $uri->getSegment(3);
+            $this->data['segment3'] = $segment3;
+        } elseif ($uri->getTotalSegments() >= 3) {
+            $segment3 = $uri->getSegment(3);
+            $this->data['segment3'] = $segment3;
         } else {
             $this->data['segment2'] = null; // or set a default value
+            $this->data['segment3'] = null; // or set a default value
         }
         $this->data['settings'] = $settingsModel->getAllSettings();
         $this->data['services'] = $servicesModel->getServiceHierarchy();
