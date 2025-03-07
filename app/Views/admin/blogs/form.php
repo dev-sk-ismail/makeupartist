@@ -82,8 +82,8 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <div id="quill-editor-default"></div>
-                    <input type="hidden" name="description" id="description" value="<?= old('description', isset($blog) ? $blog['description'] : '') ?>">
+                    <div class="quill-editor-default"></div>
+                    <input type="hidden" class="form-control quill-hidden-input" name="description" id="description" value="<?= old('description', isset($blog) ? $blog['description'] : '') ?>">
                 </div>
 
 

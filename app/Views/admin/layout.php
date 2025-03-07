@@ -337,15 +337,9 @@
                 </a>
                 <ul id="courses-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li class="nav-item">
-                        <a class="nav-link <?= $segment2 == 'courses' ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>courses">
+                        <a class="nav-link <?= $segment2 == 'courses' && !$segment3 ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>courses">
                             <i class="bi bi-grid"></i>
                             <span>Courses</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $segment3 == 'syllabus' ? 'active' : '' ?>" href="<?= base_url('/admin/courses/') ?>syllabus">
-                            <i class="bi bi-grid"></i>
-                            <span>Syllabus</span>
                         </a>
                     </li>
                     <li class="nav-item">

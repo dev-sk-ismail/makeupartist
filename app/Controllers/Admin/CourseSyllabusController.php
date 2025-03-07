@@ -18,7 +18,7 @@ class CourseSyllabusController extends BaseController
         $this->syllabusModel = new CourseSyllabusModel();
     }
 
-    public function index($courseId = null)
+    public function index($courseId)
     {
         $course = $this->courseModel->find($courseId);
         

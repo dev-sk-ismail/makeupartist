@@ -3,15 +3,15 @@
 
 <div class="container-fluid px-4">
     <h1 class="mt-4">Courses</h1>
-    
+
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
-    
+
     <?php if (session()->getFlashdata('error')): ?>
         <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
     <?php endif; ?>
-    
+
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -42,20 +42,15 @@
                             <td><?= esc($course['duration']) ?> days</td>
                             <td>
                                 <?php if (!empty($course['discount_value'])): ?>
-                                    <span class="text-decoration-line-through"><?= number_format($course['fee'], 2) ?></span>
-                                    <?php 
-                                        $discountedPrice = $course['discount_type'] == 'percentage' 
-                                            ? $course['fee'] - ($course['fee'] * $course['discount_value'] / 100)
-                                            : $course['fee'] - $course['discount_value'];
-                                    ?>
-                                    <span class="text-success fw-bold"><?= number_format($discountedPrice, 2) ?></span>
+                                    <span class="text-decoration-line-through"><?= number_format($course['fee'], 0) ?></span>
+                                    <span class="text-success fw-bold"><?= $course['discounted_price'] ?></span>
                                 <?php else: ?>
                                     <?= number_format($course['fee'], 2) ?>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <?php if (isset($course['start_time']) && isset($course['end_time'])): ?>
-                                    <?= date('g:i A', strtotime($course['start_time'])) ?> - 
+                                    <?= date('g:i A', strtotime($course['start_time'])) ?> -
                                     <?= date('g:i A', strtotime($course['end_time'])) ?>
                                 <?php else: ?>
                                     <em>Not set</em>
@@ -63,22 +58,22 @@
                             </td>
                             <td>
                                 <?php if ($course['image']): ?>
-                                    <img src="<?= base_url('uploads/courses/' . $course['image']) ?>" 
-                                         height="50" 
-                                         alt="<?= esc($course['name']) ?>">
+                                    <img src="<?= base_url('uploads/courses/' . $course['image']) ?>"
+                                        height="50"
+                                        alt="<?= esc($course['name']) ?>">
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="<?= site_url('admin/courses/syllabus/' . $course['id']) ?>" 
-                                   class="btn btn-info btn-sm" style="padding: 0 8px;">
+                                <a href="<?= site_url('admin/courses/syllabus/' . $course['id']) ?>"
+                                    class="btn btn-info btn-sm" style="padding: 0 8px;">
                                     <i class="bi bi-list-check"></i> Syllabus
                                 </a>
                             </td>
                             <td>
-                                <a href="<?= site_url('admin/courses/edit/' . $course['id']) ?>" 
-                                   class="btn btn-sm btn-primary" style="padding: 0 8px;">Edit</a>
-                                <button onclick="deleteCourse(<?= $course['id'] ?>)" 
-                                        class="btn btn-sm btn-danger" style="padding: 0 8px;">Delete</button>
+                                <a href="<?= site_url('admin/courses/edit/' . $course['id']) ?>"
+                                    class="btn btn-sm btn-primary" style="padding: 0 8px;">Edit</a>
+                                <button onclick="deleteCourse(<?= $course['id'] ?>)"
+                                    class="btn btn-sm btn-danger" style="padding: 0 8px;">Delete</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>

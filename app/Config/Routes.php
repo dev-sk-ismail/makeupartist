@@ -124,9 +124,9 @@ $routes->group('admin', ['filter' => 'adminAuth', 'namespace' => 'App\Controller
     $routes->post('courses/update/(:num)', 'CourseController::update/$1');
     $routes->get('courses/delete/(:num)', 'CourseController::delete/$1');
 
-    // Courses/Syllabus
-    $routes->get('courses/syllabus', 'CourseSyllabusController::index');
-    $routes->get('courses/syllabus/create', 'CourseSyllabusController::create');
+  // Courses/Syllabus
+  $routes->get('courses/syllabus/(:num)', 'CourseSyllabusController::index/$1');
+  $routes->get('courses/syllabus/create/(:num)', 'CourseSyllabusController::create/$1');
     $routes->post('courses/syllabus/store', 'CourseSyllabusController::store');
     $routes->get('courses/syllabus/edit/(:num)', 'CourseSyllabusController::edit/$1');
     $routes->post('courses/syllabus/update/(:num)', 'CourseSyllabusController::update/$1');

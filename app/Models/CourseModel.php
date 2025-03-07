@@ -17,9 +17,9 @@ class CourseModel extends Model
     protected $validationRules = [
         'name' => 'required|min_length[2]|max_length[255]',
         'title' => 'required|min_length[2]|max_length[255]',
-        'duration' => 'required|numeric',
+        'duration' => 'required|min_length[2]|max_length[100]',
         'fee' => 'required|numeric',
-        'discount_type' => 'permit_empty|in_list[percentage,fixed]',
+        'discount_type' => 'permit_empty|in_list[%,fixed]',
         'discount_value' => 'permit_empty|numeric',
         'batch_id' => 'required|numeric',
         'image' => 'permit_empty|max_length[255]',
@@ -98,7 +98,7 @@ class CourseModel extends Model
             return $course['fee'];
         }
 
-        if ($course['discount_type'] == 'percentage') {
+        if ($course['discount_type'] == '%') {
             return $course['fee'] - ($course['fee'] * $course['discount_value'] / 100);
         } else { // fixed
             return $course['fee'] - $course['discount_value'];

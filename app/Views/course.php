@@ -6,6 +6,10 @@
 <section class="course section-padding">
     <div class="container">
         <div class="row">
+            <div class="col-md-12 mb-45">
+                <h2 class="wow" data-splitting>Beautician Course</h2>
+                <p class="mt-15">Transform your passion for beauty into a thriving career.</p>
+            </div>
             <!-- Description -->
             <div class="col-md-6 mb-30">
                 <div class="course-card">

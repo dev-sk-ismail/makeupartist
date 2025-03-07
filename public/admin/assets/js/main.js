@@ -177,17 +177,26 @@
 
 // Quill editor
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Quill Editor
-  const quill = new Quill("#quill-editor-default", {
-    theme: "snow", // You can choose 'bubble' if you prefer
-  });
+  // Select all Quill editor containers
+  const quillContainers = document.querySelectorAll(".quill-editor-default");
 
-  // Populate Quill with the initial content from the input
-  const hiddenInput = document.querySelector("#description");
-  quill.root.innerHTML = hiddenInput.value;
+  quillContainers.forEach((container, index) => {
+    // Initialize Quill editor
+    const quill = new Quill(container, {
+      theme: "snow", // You can choose 'bubble' if you prefer
+    });
 
-  // Sync Quill content with the hidden input on every change
-  quill.on("text-change", () => {
-    hiddenInput.value = quill.root.innerHTML;
+    // Find the corresponding hidden input field
+    const hiddenInput = container.parentElement.querySelector(
+      ".quill-hidden-input"
+    );
+
+    // Populate Quill with the initial content from the hidden input
+    quill.root.innerHTML = hiddenInput.value;
+
+    // Sync Quill content with the hidden input on every change
+    quill.on("text-change", () => {
+      hiddenInput.value = quill.root.innerHTML;
+    });
   });
 });

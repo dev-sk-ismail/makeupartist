@@ -27,6 +27,10 @@ class CourseController extends BaseController
     public function index()
     {
         $this->data['courses'] = $this->courseModel->getAllCourses();
+        // Calculate discounted prices
+        foreach ($this->data['courses'] as &$course) {
+            $course['discounted_price'] = $this->courseModel->getDiscountedPrice($course);
+        }
         return view('admin/courses/index', $this->data);
     }
 
