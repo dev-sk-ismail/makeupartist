@@ -349,7 +349,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= $segment2 == 'batches' ? 'active' : '' ?>" href="<?= base_url('/admin/courses/') ?>batches">
+                        <a class="nav-link <?= $segment3 == 'batches' ? 'active' : '' ?>" href="<?= base_url('/admin/courses/') ?>batches">
                             <i class="bi bi-grid"></i>
                             <span>Batches</span>
                         </a>
