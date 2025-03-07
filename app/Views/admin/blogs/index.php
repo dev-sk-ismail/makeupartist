@@ -1,0 +1,88 @@
+<?= $this->extend('admin/layout') ?>
+
+<?= $this->section('content') ?>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Blogs</h1>
+    
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+    
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+    <?php endif; ?>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Blog List
+            <a href="<?= site_url('admin/blogs/create') ?>" class="btn btn-primary btn-sm float-end">Add New Blog</a>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Author</th>
+                        <th>Published Date</th>
+                        <th>Gallery</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($blogs as $index => $blog): ?>
+                        <tr>
+                            <td><?= $index + 1 ?></td>
+                            <td><?= esc($blog['title']) ?></td>
+                            <td>
+                                <?php if ($blog['image']): ?>
+                                    <img src="<?= base_url(' uploads/blogs/' . $blog['image']) ?>"
+                                        height="50"
+                                        alt="<?= esc($blog['title']) ?>">
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <span class="badge <?= $blog['status'] == 'published' ? 'bg-success' : ($blog['status'] == 'draft' ? 'bg-warning' : 'bg-secondary') ?>">
+                                    <?= ucfirst(esc($blog['status'])) ?>
+                                </span>
+                            </td>
+                            <td><?= esc($blog['author']) ?></td>
+                            <td><?= $blog['published_date'] ? date('d M Y', strtotime($blog['published_date'])) : '-' ?></td>
+                            <td>
+                                <a href="<?= site_url('admin/blog_gallery?blog_id=' . $blog['id']) ?>" 
+                                   class="btn btn-info btn-sm" style="padding: 0 8px;">
+                                    <i class="bi bi-images"></i> Gallery
+                                </a>
+                            </td>
+                            <td>
+                                <a href="<?= site_url('admin/blogs/edit/' . $blog['id']) ?>" 
+                                   class="btn btn-sm btn-primary" style="padding: 0 8px;">Edit</a>
+                                <button onclick="deleteBlog(<?= $blog['id'] ?>)" 
+                                        class="btn btn-sm btn-danger" style="padding: 0 8px;">Delete</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?php if (empty($blogs)): ?>
+                        <tr>
+                            <td colspan="7" class="text-center">No blogs found</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script>
+function deleteBlog(id) {
+    if (confirm('Are you sure you want to delete this blog? This will also delete all associated gallery images.')) {
+        window.location.href = `<?= site_url('admin/blogs/delete/') ?>${id}`;
+    }
+}
+</script>
+<?= $this->endSection() ?>
