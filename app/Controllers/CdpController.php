@@ -6,7 +6,7 @@ use App\Models\CourseModel;
 use App\Models\CourseSyllabusModel;
 use App\Models\CourseBatchModel;
 
-class CourseController extends BaseController
+class CdpController extends BaseController
 {
     protected $courseModel;
     protected $syllabusModel;
@@ -34,7 +34,7 @@ class CourseController extends BaseController
     }
 
     // Display course details by slug
-    public function detail($slug)
+    public function cdp($slug)
     {
         // Get course by slug
         $course = $this->courseModel->getCourseBySlug($slug);
@@ -46,7 +46,7 @@ class CourseController extends BaseController
         
         // Get complete course details
         $this->data['course'] = $this->courseModel->getCourseWithDetails($course['id']);
-        
+        $this->data['days']= $this->courseModel->formatDays($this->data['course']['days']);
         // Get published syllabus items only
         $this->data['syllabus'] = $this->syllabusModel->getSyllabusByCourseId($course['id'], true);
         
@@ -58,6 +58,6 @@ class CourseController extends BaseController
             $this->data['batch_time'] = $this->batchModel->formatBatchTime($this->data['course']['batch']);
         }
         
-        return view('courses/detail', $this->data);
+        return view('course', $this->data);
     }
 }

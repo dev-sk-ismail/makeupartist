@@ -4733,45 +4733,69 @@ input[type="checkbox"] {
 }
 
 
-/* course description page */
+/* course-sect description page */
 /* General Styles */
 
-/* Course Page */
-.course {
-  padding: 100px 0;
+/* course-sect Page */
+.course-sect {
+  padding: 40px 0 60px;
 }
 
-.course .category {
+.course-sect .title{
+  display: flex;
+  justify-content: center;
+}
+
+.course-sect .img-div {
+  display: flex;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  aspect-ratio: 3/1;
+}
+
+.course-sect .img-div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.course-sect .img-div:hover img {
+  transform: scale(1.1);
+}
+
+.course-sect .category {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.course .category a {
+.course-sect .category a {
   text-decoration: none;
   color: #c44953; /* Updated accent color */
   font-weight: bold;
 }
 
-.course .category .divider {
+.course-sect .category .divider {
   width: 1px;
   height: 20px;
   background: #444; /* Darker divider */
   margin: 0 15px;
 }
 
-.course .category span {
+.course-sect .category span {
   color: #777;
 }
 
-.course h2 {
+.course-sect h2 {
   font-size: 3rem;
   font-weight: bold;
   color: #ddd; /* Light text */
   margin-bottom: 20px;
 }
 
-.course p {
+.course-sect p {
   font-size: 1.1rem;
   color: #ddd; /* Light text */
   line-height: 1.8;
@@ -4784,6 +4808,15 @@ input[type="checkbox"] {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.col-md-6 .course-card{
+  text-align: left;
 }
 
 .course-card:hover {
@@ -4813,10 +4846,12 @@ input[type="checkbox"] {
 .course-card ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .course-card ul li {
-  padding: 10px 0;
   border-bottom: 1px solid #444; /* Darker border */
   font-size: 1.1rem;
   color: #ddd; /* Light text */
@@ -4826,6 +4861,24 @@ input[type="checkbox"] {
   border-bottom: none;
 }
 
+.course-sect .discount h4,
+.course-sect .pricing h3 {
+  margin: 0;
+  font-family: sans-serif;
+}
+.course-sect .pricing {
+  gap: 5%;
+}
+.course-sect .pricing .strike-through {
+  text-decoration: line-through;
+}
+
+.course-sect .final-price {
+  font-size: 20px;
+}
+.course-sect .discount-value {
+  font-size: 16px;
+}
 /* Testimonials */
 .testimonials .background {
   background-size: cover;

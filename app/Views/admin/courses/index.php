@@ -42,8 +42,8 @@
                             <td><?= esc($course['duration']) ?> days</td>
                             <td>
                                 <?php if (!empty($course['discount_value'])): ?>
-                                    <span class="text-decoration-line-through"><?= number_format($course['fee'], 0) ?></span>
-                                    <span class="text-success fw-bold"><?= $course['discounted_price'] ?></span>
+                                    <span class="text-decoration-line-through">₹<?= number_format($course['fee'], 0) ?></span>
+                                    <span class="text-success fw-bold">₹<?= $course['discounted_price'] ?></span>
                                 <?php else: ?>
                                     <?= number_format($course['fee'], 2) ?>
                                 <?php endif; ?>

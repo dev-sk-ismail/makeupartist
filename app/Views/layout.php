@@ -67,10 +67,9 @@
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('/') ?>contact">Contact</a></li>
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Cources <i class="fa-light fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="pricing" class="dropdown-item"><span>Makeup</span></a></li>
-                            <li><a href="team" class="dropdown-item"><span>Beautician</span></a></li>
-                            <li><a href="before-after" class="dropdown-item"><span>Nail Art</span></a></li>
-                            <li><a href="gallery-image" class="dropdown-item"><span>Mehendi</span></a></li>
+                            <?php foreach ($courses as $course) { ?>
+                                <li><a href="<?= base_url('/courses/' . esc($course['slug'])) ?>" class="dropdown-item"><span><?= ucwords(htmlspecialchars($course['name'])); ?></span></a></li>
+                            <?php } ?>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('/') ?>shop">Shop</a></li>

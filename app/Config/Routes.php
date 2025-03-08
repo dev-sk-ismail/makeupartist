@@ -27,7 +27,8 @@ $routes->post('/services/apiBooking', 'SdpController::apiBooking');
 $routes->get('/blogs', 'Home::blogs');
 $routes->get('/blog/(:any)', 'Home::blogPost/$1');
 
-
+//Course Description Page CDP
+$routes->get('/courses/(:any)', 'CdpController::cdp/$1');
 
 
 

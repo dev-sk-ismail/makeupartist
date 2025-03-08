@@ -104,4 +104,9 @@ class CourseModel extends Model
             return $course['fee'] - $course['discount_value'];
         }
     }
+
+    function formatDays($daysArray)
+    {
+        return implode(", ", array_map(fn($d) => substr($d["day"], 0, 3), $daysArray));
+    }
 }

@@ -8,6 +8,8 @@ use App\Models\CourseBatchModel;
 use App\Models\CourseDayModel;
 use App\Models\DayModel;
 
+helper('text');
+
 class CourseController extends BaseController
 {
     protected $courseModel;
@@ -44,7 +46,7 @@ class CourseController extends BaseController
     public function store()
     {
         $this->data = $this->request->getPost();
-        
+
         // Handle image upload
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
@@ -52,19 +54,24 @@ class CourseController extends BaseController
             $image->move('./uploads/courses', $newName);
             $this->data['image'] = $newName;
         }
-        
+
+        // Generate slug from title
+        if (!empty($this->data['name'])) {
+            $this->data['slug'] = slugify($this->data['name']);
+        }
+
         // Insert course
         $courseId = $this->courseModel->insert($this->data);
-        
+
         if (!$courseId) {
             return redirect()->back()
                 ->withInput()
                 ->with('errors', $this->courseModel->errors());
         }
-        
+
         // Handle course days
         $this->saveDays($courseId, $this->request->getPost('days'));
-        
+
         return redirect()->to('admin/courses')
             ->with('success', 'Course created successfully');
     }
@@ -72,31 +79,31 @@ class CourseController extends BaseController
     public function edit($id)
     {
         $this->data['course'] = $this->courseModel->find($id);
-        
+
         if (!$this->data['course']) {
             return redirect()->to('admin/courses')
                 ->with('error', 'Course not found');
         }
-        
+
         $this->data['batches'] = $this->batchModel->getAllBatches();
         $this->data['days'] = $this->dayModel->getActiveDays();
         $this->data['selectedDays'] = $this->courseDayModel->where('course_id', $id)
             ->findAll();
-        
+
         // Convert to simpler array of day_ids
         $selectedDayIds = [];
         foreach ($this->data['selectedDays'] as $day) {
             $selectedDayIds[] = $day['day_id'];
         }
         $this->data['selectedDayIds'] = $selectedDayIds;
-        
+
         return view('admin/courses/form', $this->data);
     }
 
     public function update($id)
     {
         $this->data = $this->request->getPost();
-        
+
         // Handle image upload
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
@@ -104,18 +111,23 @@ class CourseController extends BaseController
             $image->move('./uploads/courses', $newName);
             $this->data['image'] = $newName;
         }
-        
+
+        // Generate slug from title
+        if (!empty($this->data['name'])) {
+            $this->data['slug'] = slugify($this->data['name']);
+        }
+
         // Update course
         if (!$this->courseModel->update($id, $this->data)) {
             return redirect()->back()
                 ->withInput()
                 ->with('errors', $this->courseModel->errors());
         }
-        
+
         // Update course days
         $this->courseDayModel->deleteCourseDays($id);
         $this->saveDays($id, $this->request->getPost('days'));
-        
+
         return redirect()->to('admin/courses')
             ->with('success', 'Course updated successfully');
     }
@@ -124,14 +136,14 @@ class CourseController extends BaseController
     {
         // Delete course days first
         $this->courseDayModel->deleteCourseDays($id);
-        
+
         // Delete course
         $this->courseModel->delete($id);
-        
+
         return redirect()->to('admin/courses')
             ->with('success', 'Course deleted successfully');
     }
-    
+
     // Helper method to save course days
     private function saveDays($courseId, $dayIds)
     {

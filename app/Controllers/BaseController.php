@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 use App\Models\SettingsModel;
 use App\Models\ServicesModel;
+use App\Models\CourseModel;
 
 /**
  * Class BaseController
@@ -23,6 +24,9 @@ use App\Models\ServicesModel;
  */
 abstract class BaseController extends Controller
 {
+    protected $servicesModel;
+    protected $settingsModel;
+    protected $courseModel;
     /**
      * Instance of the main Request object.
      *
@@ -63,6 +67,8 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
         $settingsModel = new SettingsModel();
         $servicesModel = new ServicesModel();
+        $courseModel = new CourseModel();
+
 
         // Load the URI service
         $uri = service('uri');
@@ -81,5 +87,6 @@ abstract class BaseController extends Controller
         }
         $this->data['settings'] = $settingsModel->getAllSettings();
         $this->data['services'] = $servicesModel->getServiceHierarchy();
+        $this->data['courses'] = $courseModel->getAllCourses();
     }
 }

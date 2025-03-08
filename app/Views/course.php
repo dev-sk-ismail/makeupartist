@@ -1,14 +1,16 @@
 <?= $this->extend('layout') ?>
 
 <?= $this->section('content') ?>
-
 <!-- Course Page -->
-<section class="course section-padding">
+<section class="course-sect section-padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-45">
-                <h2 class="wow" data-splitting>Beautician Course</h2>
-                <p class="mt-15">Transform your passion for beauty into a thriving career.</p>
+            <div class="col-md-12 d-flex justify-content-center mb-30 flex-column">
+                <h2 class="title" data-splitting><?= ucwords('become a ' . $course['name']); ?></h2>
+                <div class="img-div">
+                    <img src="<?= base_url('uploads/courses/' . $course['image']) ?>" alt="">
+                </div>
+                <p class="mt-15"><?= $course['title']; ?></p>
             </div>
             <!-- Description -->
             <div class="col-md-6 mb-30">
@@ -21,9 +23,7 @@
                     </div>
 
                     <p>
-                        Our Beautician Course is designed to provide you with comprehensive training in beauty and skincare.
-                        Learn the latest techniques in makeup, facials, hair styling, and more. Whether you're a beginner
-                        or looking to enhance your skills, this course will help you achieve your goals.
+                        <?= $course['description'] ?>
                     </p>
                 </div>
             </div>
@@ -38,13 +38,10 @@
                     </div>
 
                     <ul>
-                        <li>Introduction to Beauty and Skincare</li>
-                        <li>Makeup Techniques (Day, Evening, Bridal)</li>
-                        <li>Facials and Skin Treatments</li>
-                        <li>Hair Styling and Cutting</li>
-                        <li>Manicure and Pedicure</li>
-                        <li>Waxing and Threading</li>
-                        <li>Professional Ethics and Client Management</li>
+                        <?php foreach ($syllabus as $item) { ?>
+
+                            <li><strong><?= $item['item'] ?>: </strong> <?= $item['description'] ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -58,7 +55,7 @@
                         <h3>Duration</h3>
                     </div>
 
-                    <p>3 Months (12 Weeks)</p>
+                    <p><?= $course['duration'] ?></p>
                 </div>
             </div>
             <!-- Schedule -->
@@ -72,8 +69,8 @@
                     </div>
 
                     <ul>
-                        <li><strong>Days:</strong> Mon, Wed, Fri</li>
-                        <li><strong>Timing:</strong> 10:00 AM - 12:00 PM</li>
+                        <li><strong>Days:</strong> <?= $days; ?></li>
+                        <li><strong>Timing:</strong> <?= $batch_time; ?></li>
                     </ul>
                 </div>
             </div>
@@ -86,9 +83,19 @@
                         </div>
                         <h3>Fee</h3>
                     </div>
-
-                    <p><strong>Total Fee:</strong> $500.00</p>
-                    <p><strong>Discount:</strong> 10% (Final Fee: $450.00)</p>
+                    <div class="pricing d-flex justify-content-between g-5 align-items-center">
+                        <div class="discount">
+                            <h4 class="discount-value">
+                                <?= $course['discount_type'] === 'fixed' ?
+                                    'FLAT ₹' . number_format($course['discount_value'], 0) :
+                                    number_format($course['discount_value'], 0) . '%' ?> Off
+                            </h4>
+                            <small class="text-muted d-flex">M.R.P. <span class="strike-through"> ₹<?= htmlspecialchars(isset($course['fee']) ? $course['fee'] : '') ?></span> </small>
+                        </div>
+                        <div class="final-price">
+                            <h4>₹<?= htmlspecialchars(isset($discounted_price) ? $discounted_price : '') ?></h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
