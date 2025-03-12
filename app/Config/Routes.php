@@ -59,6 +59,10 @@ $routes->post('admin/reset-password-submit', 'Admin\Auth::resetPasswordSubmit');
 $routes->group('admin', ['filter' => 'adminAuth', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
   // Dashboard
   $routes->get('dashboard', 'DashboardController::index');
+  $routes->get('/', 'DashboardController::index');
+  $routes->add('/', 'DashboardController::index');
+  $routes->get('', 'DashboardController::index');
+  $routes->add('', 'DashboardController::index');
 
   // Settings
   $routes->get('settings', 'SettingsController::index');

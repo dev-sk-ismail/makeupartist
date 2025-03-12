@@ -78,7 +78,7 @@
                         </div>
                         <div class="card-body">
                             <strong class="card-title"><?= esc($product['name']) ?></strong>
-                            <p class="card-description"><?= esc($product['description']) ?></p>
+                            <p class="card-description"><?= $product['description'] ?></p>
                             <?php
                             // Calculate final price
                             $finalPrice = $product['price'];

@@ -299,11 +299,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $segment2 == 'bookings' || $segment2 == 'services' || $segment2 == 'variants' ? 'active' : '' ?>"
+                <a class="nav-link  <?= $segment2 == 'bookings' || $segment2 == 'services' || $segment2 == 'variants' ? 'active' : 'collapsed' ?>"
                     data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-journal-text"></i><span>Services & Bookings</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="services-nav" class="nav-content collapse <?= $segment2 == 'bookings' || $segment2 == 'services' || $segment2 == 'variants' ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
                     <li class="nav-item">
                         <a class="nav-link <?= $segment2 == 'services' ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>services">
                             <i class="bi bi-grid"></i>
@@ -331,11 +331,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $segment2 == 'courses' ? 'active' : '' ?>"
+                <a class="nav-link  <?= $segment2 == 'courses' ? 'active' : 'collapsed' ?>"
                     data-bs-target="#courses-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-journal-text"></i><span>Courses and Resources</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="courses-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="courses-nav" class="nav-content collapse <?= $segment2 == 'courses' ? 'show' : '' ?>" data-bs-parent="#sidebar-nav">
                     <li class="nav-item">
                         <a class="nav-link <?= $segment2 == 'courses' && !$segment3 ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>courses">
                             <i class="bi bi-grid"></i>
@@ -351,11 +351,11 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed <?= $segment2 == 'categories' || $segment2 == 'products' ? 'active' : '' ?>"
+                <a class="nav-link  <?= $segment2 == 'categories' || $segment2 == 'products' ? 'active' : 'collapsed' ?>"
                     data-bs-target="#shop-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-journal-text"></i><span>Shop</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="shop-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="shop-nav" class="nav-content collapse <?= $segment2 == 'categories' || $segment2 == 'products' ? 'show' : '' ?> " data-bs-parent="#sidebar-nav">
                     <li class="nav-item">
                         <a class="nav-link <?= $segment2 == 'categories' ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>categories">
                             <i class="bi bi-grid"></i>
