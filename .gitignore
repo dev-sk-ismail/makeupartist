@@ -125,3 +125,6 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 writable/cache/index.html
+
+# database files
+*.sql
