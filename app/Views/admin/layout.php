@@ -350,6 +350,26 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed <?= $segment2 == 'categories' || $segment2 == 'products' ? 'active' : '' ?>"
+                    data-bs-target="#shop-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Shop</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="shop-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link <?= $segment2 == 'categories' ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>categories">
+                            <i class="bi bi-grid"></i>
+                            <span>Product Categories</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $segment2 == 'products' ? 'active' : '' ?>" href="<?= base_url('/admin/') ?>products">
+                            <i class="bi bi-grid"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
 
             <li class="nav-heading">Pages</li>

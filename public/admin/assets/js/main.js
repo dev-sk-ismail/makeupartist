@@ -200,3 +200,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+//making the alert boxes disappear on click
+
+document.querySelectorAll('.alert').forEach(function(element) {
+  element.addEventListener('click', function() {
+      element.style.display = 'none';
+  });
+});

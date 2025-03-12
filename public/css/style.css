@@ -4879,78 +4879,239 @@ input[type="checkbox"] {
 .course-sect .discount-value {
   font-size: 16px;
 }
-/* Testimonials */
-.testimonials .background {
-  background-size: cover;
-  background-position: center;
-  color: #ddd; /* Light text */
+ 
+
+
+/* shop style */
+
+/* Shop Section Styling */
+.shop {
+  color: #ddd;
+  padding: 2rem 0;
 }
 
-.testimonials h5 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #ddd; /* Light text */
+.shop h1 {
+  color: white;
+  font-weight: 600;
+  border-bottom: 2px solid #c44953;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 
-.testimonials h6 {
-  font-size: 1.2rem;
-  color: #c44953; /* Updated accent color */
-  margin-bottom: 10px;
+/* Alert styling */
+.shop .alert {
+  background-color: #252525;
+  border-left: 4px solid #c44953;
+  color: #ddd;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.testimonials .btn-link a {
-  color: #c44953; /* Updated accent color */
-  text-decoration: none;
-  font-weight: bold;
+/* Card styling */
+.shop .card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.testimonials .btn-link .btn-block {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background: #c44953; /* Updated accent color */
-  margin-top: 5px;
+.shop .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.testimonials .owl-carousel .item {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+.shop .card-header {
+  background-color: #252525;
+  color: white;
+  font-weight: 500;
+  border-bottom: 1px solid #333;
+  padding: 1rem;
 }
 
-.testimonials .owl-carousel .item p {
-  font-style: italic;
-  color: #ddd; /* Light text */
+.shop .card-body {
+  padding: 1.25rem;
+  flex: 1 1 auto;
 }
 
-.testimonials .owl-carousel .item .quote {
-  color: #c44953; /* Updated accent color */
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+.shop .card-footer {
+  background-color: #1a1a1a;
+  border-top: none;
+  padding: 1rem;
 }
 
-.testimonials .owl-carousel .item .info {
+/* Form controls */
+.shop .form-label {
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.shop .form-select,
+.shop .form-control {
+  background-color: #252525;
+  border: 1px solid #444;
+  color: #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.shop .form-select:focus,
+.shop .form-control:focus {
+  background-color: #252525;
+  border-color: #c44953;
+  box-shadow: 0 0 0 0.2rem rgba(196, 73, 83, 0.25);
+  color: white;
+}
+
+/* Button styling */
+.shop .btn {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.shop .btn-primary {
+  background-color: #c44953;
+  border: none;
+  color: white;
+}
+
+.shop .btn-primary:hover {
+  background-color: #a83a43;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(196, 73, 83, 0.3);
+}
+
+.shop .btn-secondary {
+  background-color: #333;
+  border: none;
+  color: #ddd;
+}
+
+.shop .btn-secondary:hover {
+  background-color: #444;
+  color: white;
+}
+
+/* Product styling */
+.shop .card-img-top {
+  background-color: #252525;
+  padding: 1.5rem;
+  height: 200px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #333;
 }
 
-.testimonials .owl-carousel .item .info .author-img {
-  margin-right: 15px;
+.shop .card-img-top img {
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.testimonials .owl-carousel .item .info .author-img img {
-  border-radius: 50%;
-}
-
-.testimonials .owl-carousel .item .info .cont h6 {
+.shop .card-title {
+  color: white;
   font-size: 1.1rem;
-  margin-bottom: 5px;
-  color: #ddd; /* Light text */
+  margin-bottom: 0.75rem;
+  display: block;
 }
 
-.testimonials .owl-carousel .item .info .cont span {
+.shop .card-description {
+  color: #aaa;
   font-size: 0.9rem;
-  color: #777; /* Lighter text */
+  min-height: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Price styling */
+.shop .text-decoration-line-through {
+  text-decoration: line-through;
+  color: #888 !important;
+}
+
+.shop .badge {
+  font-weight: 500;
+  padding: 0.35rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.shop .badge-discount {
+  background-color: #c44953;
+  color: white;
+}
+
+.shop .badge-tag {
+  background-color: #333;
+  color: #ddd;
+}
+
+.shop .price-original {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.shop .price-discounted {
+  color: #c44953;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.shop .price-regular {
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Pagination */
+.shop .pagination {
+  margin-top: 2rem;
+}
+
+.shop .pagination li {
+  margin: 0 0.25rem;
+}
+
+.shop .pagination li a,
+.shop .pagination li span {
+  background-color: #252525;
+  border: 1px solid #444;
+  color: #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.shop .pagination li.active span,
+.shop .pagination li a:hover {
+  background-color: #c44953;
+  border-color: #c44953;
+  color: white;
+}
+
+/* Empty state */
+.shop .text-center.py-5 {
+  padding: 3rem 0;
+}
+
+.shop .text-center.py-5 i {
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.shop .text-center.py-5 h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.shop .text-center.py-5 p {
+  color: #888;
 }

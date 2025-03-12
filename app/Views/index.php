@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="item">
                     <div class="view-on-mobile">
-                        <h6><?=!empty($title)?$title:''?></h6>
+                        <h6><?= !empty($title) ? $title : '' ?></h6>
                         <h1>Bobbi Noda</h1>
                     </div>
                     <div class="transform-banner position-relative"> <img class="img home-default-img home-default-img-left wow imago" src="images/slider.jpg" alt=""> </div>
@@ -123,8 +123,8 @@
 <!-- divider line -->
 
 <div class="line-vr-section"></div>
-        
-<!-- About --> 
+
+<!-- About -->
 <section class="about section-padding">
     <div class="container">
         <div class="row">
@@ -189,106 +189,7 @@
         </div>
     </div>
 </section>
-<!-- divider line -->
-<div class="line-vr-section"></div>
-<!-- Team -->
-<section class="team section-padding">
-    <div class="container">
-        <div class="row mb-45">
-            <div class="col-md-12 text-center">
-                <h6 class="wow" data-splitting>Makeup Artist</h6>
-                <h1 class="wow" data-splitting>Our Team</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="img"><img src="images/team/01.jpg" alt=""></div>
-                        <div class="con">
-                            <h5 class="mb-0"><a href="team-single.html">Jessica Brown<br><span>Pro Hair & Makeup Artist</span></a></h5>
-                            <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img"> <img src="images/team/02.jpg" alt="" class="w-100"> </div>
-                        <div class="con">
-                            <h5 class="mb-0"><a href="team-single.html">Emma Smith<br><span>Senior Pro Hairstylist</span></a></h5>
-                            <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img"> <img src="images/team/03.jpg" alt="" class="w-100"> </div>
-                        <div class="con">
-                            <h5 class="mb-0"><a href="team-single.html">Daniel Martin<br><span>Senior Makeup Artist</span></a></h5>
-                            <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img"><img src="images/team/04.jpg" alt=""></div>
-                        <div class="con">
-                            <h5 class="mb-0"><a href="team-single.html">Jessica Brown<br><span>Pro Hair & Makeup Artist</span></a></h5>
-                            <div class="arrow"> <a href="team-single.html"><i class="fa-light fa-arrow-up-right"></i></a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- divider line -->
-<div class="line-vr-section"></div>
-<!-- Price -->
-<section class="price section-padding">
-    <div class="container">
-        <div class="row mb-45">
-            <div class="col-md-12 text-center">
-                <h6 class="wow" data-splitting>Our Pricing</h6>
-                <h1 class="wow" data-splitting>Pricing Plan</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mb-30 wow fadeInUp" data-wow-delay=".2s">
-                <div class="item">
-                    <h6 class="type">General</h6>
-                    <div class="content d-flex align-items-center">
-                        <div class="mr-40">
-                            <h2>$120</h2>
-                        </div>
-                        <div class="feat">
-                            <ul class="rest">
-                                <li><i class="fa-regular fa-check"></i> <span>Eye and Eyelash Makeup</span></li>
-                                <li><i class="fa-regular fa-check"></i> <span>Hair Makeup</span>
-                                <li><i class="fa-regular fa-check"></i> <span>Children Face Makeup</span>
-                                <li><i class="fa-regular fa-check"></i> <span>Effect Makeup</span></li>
-                                <li><i class="fa-regular fa-check"></i> <span>Face Makeup</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-30 wow fadeInUp" data-wow-delay=".4s">
-                <div class="item">
-                    <h6 class="type">Wedding</h6>
-                    <div class="content d-flex align-items-center">
-                        <div class="mr-40">
-                            <h2>$170</h2>
-                        </div>
-                        <div class="feat">
-                            <ul class="rest">
-                                <li><i class="fa-regular fa-check"></i> <span>Curly Haircute & Colors</span></li>
-                                <li><i class="fa-regular fa-check"></i> <span>Color corrections</span></li>
-                                <li><i class="fa-regular fa-check"></i> <span>Hair Wash</span></li>
-                                <li><i class="fa-regular fa-check"></i> <span>Blow Dry Hair</span></li>
-                                <li><i class="fa-regular fa-check"></i> <span>Foilyage</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!-- divider line -->
 <div class="line-vr-section"></div>
 <!-- Blog Home -->

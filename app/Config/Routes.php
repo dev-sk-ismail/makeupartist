@@ -30,6 +30,10 @@ $routes->get('/blog/(:any)', 'Home::blogPost/$1');
 //Course Description Page CDP
 $routes->get('/courses/(:any)', 'CdpController::cdp/$1');
 
+//Shop
+$routes->get('shop', 'ShopController::index');
+$routes->get('shop/detail/(:num)', 'CategoryController::detail/$1');
+$routes->get('shop/category/(:num)', 'CategoryController::category/$1');
 
 
 
@@ -141,7 +145,22 @@ $routes->group('admin', ['filter' => 'adminAuth', 'namespace' => 'App\Controller
     $routes->post('courses/batches/update/(:num)', 'CourseBatchController::update/$1');
     $routes->get('courses/batches/delete/(:num)', 'CourseBatchController::delete/$1');
 
-  
+  // Product_categories
+  $routes->get('categories', 'CategoryController::index');
+  $routes->get('categories/create', 'CategoryController::create');
+  $routes->post('categories/store', 'CategoryController::store');
+  $routes->get('categories/edit/(:num)', 'CategoryController::edit/$1');
+  $routes->post('categories/update/(:num)', 'CategoryController::update/$1');
+  $routes->get('categories/delete/(:num)', 'CategoryController::delete/$1');
 
-
+  // Products
+  $routes->get('products', 'ProductController::index');
+  $routes->get('products/create', 'ProductController::create');
+  $routes->post('products/store', 'ProductController::store');
+  $routes->get('products/edit/(:num)', 'ProductController::edit/$1');
+  $routes->get('products/toggle-published/(:num)', 'ProductController::togglePublished/$1');
+  $routes->get('products/toggle-active/(:num)', 'ProductController::toggleActive/$1');
+  $routes->get('products/toggle-featured/(:num)', 'ProductController::toggleFeatured/$1');
+  $routes->post('products/update/(:num)', 'ProductController::update/$1');
+  $routes->get('products/delete/(:num)', 'ProductController::delete/$1');
 });
