@@ -12,48 +12,42 @@
                 <h1 class="wow" data-splitting>Latest News</h1>
             </div>
         </div>
-            <!-- blog content -->
+        <!-- blog content -->
 
 
-            <div class="content">
-                <div class="row gx-5">
-                    <?php foreach( $blogs as $blog ) { ?>
-                    
+        <div class="content">
+            <div class="row gx-5">
+                <?php foreach ($blogs as $blog) { ?>
+
                     <div class="col-md-6">
                         <div class="item">
                             <div class="img">
-                                <a href="<?= base_url('/blog/').$blog['slug'] ?>"> <img src="<?= base_url('/') ?>uploads/blogs/<?= $blog['image'] ?>" class="rounded-1" alt=""> </a>
+                                <a href="<?= base_url('/blog/') . $blog['slug'] ?>"> <img src="<?= base_url('/') ?>uploads/blogs/<?= $blog['image'] ?>" class="rounded-1" alt=""> </a>
                                 <div class="date">
-                                    <a href="<?= base_url('/blog/').$blog['slug'] ?>"> <span>Apr</span> <i>14</i> </a>
+                                    <a href="<?= base_url('/blog/') . $blog['slug'] ?>"> <span>Apr</span> <i>14</i> </a>
                                 </div>
                             </div>
                             <div class="wrap">
-                                <div class="category">
-                                    <a href="<?= base_url('/') ?>blog">
-                                        <div>Blog</div>
-                                    </a>
-                                    <div class="divider"></div>
-                                    <div>Bridal</div>
-                                </div>
-                                <h4><a href="<?= base_url('/blog/').$blog['slug'] ?>">Wedding Hairstyle Tips</a></h4>
-                                <p>Makeup potenti fringilla pretium ipsum non blandit. Vivamus eget nisi non mi iaculis iaculis imserie uisero sevin elentesque habitant morbi tristique senectus et netus et malesuada fames actur sisenestion mauris suscipit mis nec esta a in the miss tincidunt eros.</p>
+                                <h4><a href="<?= base_url('/blog/') . $blog['slug'] ?>"><?= $blog['title'] ?></a></h4>
+                                <p class="item-txt"><?= excerpt($blog['description'], 400); ?></p>
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
-                
-                    <!-- pagination -->
-                    <div class="col-md-12">
-                        <ul class="pagination-wrap mb-30 mt-30">
-                            <li><a href="<?= base_url('/') ?>blog"><i class="fa-light fa-angle-left"></i></a></li>
-                            <li><a href="<?= base_url('/') ?>blog">1</a></li>
-                            <li><a href="<?= base_url('/') ?>blog" class="active">2</a></li>
-                            <li><a href="<?= base_url('/') ?>blog">3</a></li>
-                            <li><a href="<?= base_url('/') ?>blog"><i class="fa-light fa-angle-right"></i></a></li>
-                        </ul>
-                    </div>
+                <?php } ?>
+
+                <!-- pagination -->
+                <div class="col-md-12 d-flex justify-content-center">
+                    <?php if (isset($pager)): ?>
+                        <div class="pagination pagination-wrap mb-30 mt-30">
+                            <?= $pager->links('blogs', 'custom_pagination') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
+                <!-- Display pagination links -->
+
             </div>
+        </div>
     </div>
 </section>
 <!-- Testiominals -->
@@ -66,7 +60,7 @@
                     <h6>Need Help?</h6>
                     <h5 class="wow" data-splitting>Do you need help with creative make-up?</h5>
                     <div class="btn-wrap text-left wow fadeInUp" data-wow-delay=".6s">
-                        <div class="btn-link"> <a href="<?= base_url('/') ?>">hi@makeup.com</a> <span class="btn-block animation-bounce"></span> </div>
+                        <div class="btn-link"> <a href="mailto:<?= esc($settings['contact_email']); ?>"><?= esc($settings['contact_email']); ?></a> <span class="btn-block animation-bounce"></span> </div>
                     </div>
                 </div>
                 <!-- testiominals -->

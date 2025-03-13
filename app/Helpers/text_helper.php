@@ -16,3 +16,30 @@ function slugify($string)
 
     return $string;
 }
+
+
+function excerpt($text, $length = 100, $suffix = '...')
+{
+    // Remove any HTML tags
+    $text = strip_tags($text);
+
+    // Trim whitespace
+    $text = trim($text);
+
+    // If the text is already shorter than the max length, return it
+    if (mb_strlen($text, 'UTF-8') <= $length) {
+        return $text;
+    }
+
+    // Truncate the text
+    $text = mb_substr($text, 0, $length, 'UTF-8');
+
+    // Ensure we don't cut off in the middle of a word
+    $position = mb_strrpos($text, ' ', 0, 'UTF-8');
+    if ($position !== false) {
+        $text = mb_substr($text, 0, $position, 'UTF-8');
+    }
+
+    // Add the suffix
+    return $text . $suffix;
+}

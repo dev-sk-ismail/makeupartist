@@ -68,4 +68,19 @@ class BlogModel extends Model
         return $this->where('slug', $slug)
             ->first();
     }
+
+    //pagination related functions
+    public function countPublishedBlogs()
+    {
+        return $this->where('status', 'published')
+            ->countAllResults();
+    }
+
+    public function getPaginatedBlogs($perPage)
+    {
+        return $this->where('status', 'published')
+            ->where('published_date <=', date('Y-m-d H:i:s'))
+            ->orderBy('published_date', 'desc')
+            ->paginate($perPage, 'blogs');
+    }
 }

@@ -55,14 +55,23 @@ class Home extends BaseController
         return view('404', $this->data);
     }
 
-    public function blogs(): string
+    public function blogs($pageNum = null): string
     {
-        $blogs = $this->blogModel->getPublishedBlogs();
+        $perPage = 2;  // Number of blogs per page
+
+        // Get paginated list of published blogs
+        $blogs = $this->blogModel->getPaginatedBlogs($perPage);
+
+        // Load galleries for each blog
         foreach ($blogs as &$post) {
             $postId = $post['id'];
             $post['gallery'] = $this->blogGalleryModel->getPublishedGalleryByBlogId($postId);
         }
+
+        // Pass data to view
         $this->data['blogs'] = $blogs;
+        $this->data['pager'] = $this->blogModel->pager;
+
         return view('blogs', $this->data);
     }
 
