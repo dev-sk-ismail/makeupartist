@@ -4810,7 +4810,7 @@ input[type="checkbox"] {
   margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
-  flex-direction: column;t
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;

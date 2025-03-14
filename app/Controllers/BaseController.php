@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\ContactMessagesModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -68,6 +69,7 @@ abstract class BaseController extends Controller
         $settingsModel = new SettingsModel();
         $servicesModel = new ServicesModel();
         $courseModel = new CourseModel();
+        $messageModel = new ContactMessagesModel();
 
 
         // Load the URI service
@@ -88,5 +90,7 @@ abstract class BaseController extends Controller
         $this->data['settings'] = $settingsModel->getAllSettings();
         $this->data['services'] = $servicesModel->getServiceHierarchy();
         $this->data['courses'] = $courseModel->getAllCourses();
+        $this->data['unreadMessages'] = $messageModel->getUnreadMessages();
+        $this->data['unreadCount'] = $messageModel->countUnreadMessages();
     }
 }

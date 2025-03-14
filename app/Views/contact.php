@@ -20,8 +20,8 @@
                     <h5>Email us</h5>
                     <p><?= isset($settings) ? $settings['contact_email'] : 'hello@makeupartisthena.com'  ?></p>
                     <span class="numb fa-light fa-envelope"></span>
-                </div> 
-            </div> 
+                </div>
+            </div>
             <div class="col-md-4 wow fadeInUp" data-wow-delay=".4s">
                 <div class="item"> <span class="icon fa-light fa-location-dot"></span>
                     <h5>Our address</h5>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-4 wow fadeInUp" data-wow-delay=".6s">
-                <div class="item active"> <span class="icon fa-light fa-phone"></span> 
+                <div class="item active"> <span class="icon fa-light fa-phone"></span>
                     <h5>Call us</h5>
                     <p><?= isset($settings) ? $settings['bsns_phone'] : '7478987797'  ?></p>
                     <span class="numb fa-light fa-phone"></span>
@@ -47,29 +47,31 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
                 <h5>Get in touch!</h5>
-                <form method="post" class="contact__form" action="mail.php">
+                <form method="post" class="contact__form" action="<?= site_url('contact/submit') ?>">
                     <!-- Form message -->
                     <div class="row">
                         <div class="col-12">
-                            <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div>
+                            <?php if (session()->getFlashdata('success')): ?>
+                                <div class="alert alert-success" onclick="this.style.display='none'"><?= session()->getFlashdata('success') ?></div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <!-- Form elements -->
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input name="name" type="text" placeholder="Name *" required>
+                            <input name="name" type="text" placeholder="Name *" required minlength="2" maxlength="100">
                         </div>
                         <div class="col-md-6 form-group">
-                            <input name="email" type="email" placeholder="Email Address *" required>
+                            <input name="email" type="email" placeholder="Email Address" maxlength="255">
                         </div>
                         <div class="col-md-6 form-group">
-                            <input name="phone" type="text" placeholder="Phone *" required>
+                            <input name="phone" type="text" placeholder="Phone*" maxlength="15" required>
                         </div>
                         <div class="col-md-12 form-group">
-                            <input name="subject" type="text" placeholder="Subject *" required>
+                            <input name="sub" type="text" placeholder="Subject" maxlength="255">
                         </div>
                         <div class="col-md-12 form-group">
-                            <textarea name="message" id="message" cols="30" rows="4" placeholder="How can we help you? Feel free to get in touch! *" required></textarea>
+                            <textarea name="msg" id="message" cols="30" rows="4" placeholder="How can we help you? Feel free to get in touch! *" required></textarea>
                         </div>
                         <div class="col-md-12 mt-15">
                             <div class="btn-wrap">
@@ -79,6 +81,7 @@
                             </div>
                         </div>
                     </div>
+                    <?= csrf_field() ?>
                 </form>
             </div>
         </div>

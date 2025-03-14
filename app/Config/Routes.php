@@ -36,6 +36,10 @@ $routes->get('shop', 'ShopController::index');
 $routes->get('shop/detail/(:num)', 'CategoryController::detail/$1');
 $routes->get('shop/category/(:num)', 'CategoryController::category/$1');
 
+//contact page
+$routes->get('contact', 'Home::contact');
+$routes->post('/contact/submit', 'ContactController::submit');
+
 
 
 
@@ -168,4 +172,11 @@ $routes->group('admin', ['filter' => 'adminAuth', 'namespace' => 'App\Controller
   $routes->get('products/toggle-featured/(:num)', 'ProductController::toggleFeatured/$1');
   $routes->post('products/update/(:num)', 'ProductController::update/$1');
   $routes->get('products/delete/(:num)', 'ProductController::delete/$1');
+
+  // Contact Messages
+  $routes->get('messages', 'ContactMessagesController::index');
+  $routes->get('messages/view/(:num)', 'ContactMessagesController::view/$1');
+  $routes->get('messages/toggle-read/(:num)', 'ContactMessagesController::toggleRead/$1');
+  $routes->get('messages/toggle-responded/(:num)', 'ContactMessagesController::toggleResponded/$1');
+  $routes->get('messages/clear-filters', 'ContactMessagesController::clearFilters');
 });

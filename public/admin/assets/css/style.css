@@ -1220,18 +1220,17 @@ h6 {
   font-size: 14px;
   transition: all 0.3s;
   border-top: 1px solid #cddfff;
-}
-
-.footer .copyright {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   text-align: center;
   color: #012970;
 }
+
 
 .footer .credits {
   padding-top: 5px;
-  text-align: center;
   font-size: 13px;
-  color: #012970;
 }
 
 
