@@ -75,10 +75,9 @@
                 </li><!-- End Search Icon-->
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link nav-icon" href="" data-bs-toggle="dropdown">
-                        <i class="bi bi-bell"></i>
-                        <span class="badge bg-primary badge-number">0</span>
-                    </a><!-- End Notification Icon -->
+                    <a class="nav-link nav-icon" href="<?= base_url(); ?>" aria-label="View Frontend" target="_blank">
+                        <i class="bi bi-eye"></i>
+                    </a><!-- End Preview Icon -->
                 </li>
 
                 <li class="nav-item dropdown">
@@ -102,7 +101,7 @@
                                 <a href="<?= site_url('admin/messages/view/' . $message['id']) ?>">
                                     <img src="<?= base_url('/admin/') ?>assets/img/profile-img.jpg" alt="" class="rounded-circle">
                                     <div>
-                                        <h4><?= $message['name'] ?></h4>
+                                        <h4><?= ucwords($message['name']) ?></h4>
                                         <p><?= excerpt($message['msg'], 70); ?></p>
                                         <p><?= $message['created_at'] ?></p>
                                     </div>
@@ -125,12 +124,12 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="<?= base_url('/admin/') ?>assets/img/admin.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2"><?= session('fullname'); ?></span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?= ucwords(strtolower(session('fullname'))); ?></span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?= session('fullname'); ?></h6>
+                            <h6><?= ucwords(strtolower(session('fullname'))); ?></h6>
                             <span><?= session('role'); ?></span>
                         </li>
                         <li>

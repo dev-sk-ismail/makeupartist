@@ -16,7 +16,7 @@
 
 <section class="section dashboard">
   <div class="container text-center">
-    <h1>Welcome <?= session('fullname'); ?></h1>
+    <h1>Welcome <?= ucwords(strtolower(session('fullname'))); ?></h1>
   </div>
 </section>
 
