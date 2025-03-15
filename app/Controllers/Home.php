@@ -27,6 +27,17 @@ class Home extends BaseController
 
     public function index(): string
     {
+        // Get paginated list of published blogs
+        $blogs = $this->blogModel->getPublishedBlogs();
+
+        // Load galleries for each blog
+        foreach ($blogs as &$post) {
+            $postId = $post['id'];
+            $post['gallery'] = $this->blogGalleryModel->getPublishedGalleryByBlogId($postId);
+        }
+
+        // Pass data to view
+        $this->data['blogs'] = $blogs;
         return view('index', $this->data);
     }
 

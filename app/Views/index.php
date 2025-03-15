@@ -49,72 +49,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/services/1.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="text">
-                                <a href="services-single.html">
-                                    <h4>Hair Makeup</h4>
-                                    <p>Discover</p>
-                                </a>
+                    <?php foreach ($services as $service) {
+                        foreach ($service['subcategories'] as $subService) { ?>
+                            <div class="item">
+                                <div class="wrap">
+                                    <div class="img"> <img src="<?= base_url('uploads/services/' . $subService['img']) ?>" class="img-fluid rounded-1"> </div>
+                                    <div class="text">
+                                        <a href="<?= base_url('/services/' . esc($subService['slug'])) ?>">
+                                            <h4><?= $subService['name'] ?></h4>
+                                            <p>Discover</p>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/services/2.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="text">
-                                <a href="services-single.html">
-                                    <h4>Eye Makeup</h4>
-                                    <p>Discover</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/services/3.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="text">
-                                <a href="services-single.html">
-                                    <h4>Wedding Makeup</h4>
-                                    <p>Discover</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/services/4.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="text">
-                                <a href="services-single.html">
-                                    <h4>Effect Makeup</h4>
-                                    <p>Discover</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/services/5.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="text">
-                                <a href="services-single.html">
-                                    <h4>Face Makeup</h4>
-                                    <p>Discover</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/services/6.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="text">
-                                <a href="services-single.html">
-                                    <h4>Fashion Makeup</h4>
-                                    <p>Discover</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php }
+                    }; ?>
                 </div>
             </div>
         </div>
@@ -206,17 +155,19 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/blog/1.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="title">
-                                <a href="post.html">
-                                    <h6>Bridal</h6>
-                                    <h4>Wedding Hairstyle Tips</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                </a>
+                    <?php foreach ($blogs as $blog) { ?>
+                        <div class="item">
+                            <div class="wrap">
+                                <div class="img"> <img src="<?= base_url('/uploads/blogs/') . $blog['image'] ?>" class="img-fluid rounded-1"> </div>
+                                <div class="title">
+                                    <a href="<?= base_url('/blog/') . $blog['slug'] ?>">
+                                        <h6><?= date("F d", strtotime($blog['published_date'])); ?></h6>
+                                        <h4><?= $blog['title'] ?></h4> <i class="icon fa-light fa-arrow-up-right"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                     <div class="item">
                         <div class="wrap">
                             <div class="img"> <img src="images/blog/2.jpg" class="img-fluid rounded-1"> </div>
@@ -235,28 +186,6 @@
                                 <a href="post.html">
                                     <h6>Makeup</h6>
                                     <h4>Birthday Party Ideas</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/blog/4.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="title">
-                                <a href="post.html">
-                                    <h6>Face Makeup</h6>
-                                    <h4>Tips for Face Makeup</h4> <i class="icon fa-light fa-arrow-up-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wrap">
-                            <div class="img"> <img src="images/blog/5.jpg" class="img-fluid rounded-1"> </div>
-                            <div class="title">
-                                <a href="post.html">
-                                    <h6>Makeup</h6>
-                                    <h4>Make Up Techniques</h4> <i class="icon fa-light fa-arrow-up-right"></i>
                                 </a>
                             </div>
                         </div>
